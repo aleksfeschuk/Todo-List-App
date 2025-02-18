@@ -4,29 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do List App</title>
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-
-    <div class="container">
-        <div class="todo-header">
-            <h2>ToDo List</h2>
-
+    <!-- Header -->
+   <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-check-double"></i>
+                <h1 class="title">Todo List</h1>
+            </div>
+            <!-- open nav -->
+            <button class="toggle-nav" id="toggle-nav">
+                <i class="fas fa-bars"></i>
+            </button> 
         </div>
+   </header>
 
-        <div class="todo-body">
-            <input type="text" id="todoText" class="todo-input" placeholder="Add your items">
-            <img src="" alt="+" id="AddUpdateClick" onclick="CreateTodoItems()">
-        </div>
+
+    <!-- main -->
+
+    <main class="content">
+        <aside class="sidebar" id="sidebar">
+            
+            <section class="default-categories">
+               
+                <div class="container">
+                    <button class="category-button" id="inbox-category">
+                        <i class="fas fa-inbox"></i>
+                        Inbox
+                    </button>
+                    <button class="category-button" id="today-category">
+                        <i class="fas fa-calendar-day"></i>
+                        Today
+                    </button>
+                    <button class="category-button" id="week-category">
+                        <i class="fas fa-calendar-week"></i>
+                        This Week
+                    </button>
+
+                    <!-- Custom projects -->
+                    <h2 class="custom-projects-header">My projects</h2>
+                    <div class="project-list" id="project-list"></div>
+                    <button class="add-project-btn" id="add-project-btn">
+                        <i class="fas fa-plus-circle"></i>
+                        New Project
+                    </button>
+
+                    <!-- Project creation popup -->
+
+                    <div class="project-popup" id="project-popup">
+                        <input 
+                            class="project-input"
+                            id="project-input"
+                            type="text"
+                            placeholder="Enter project name">
+                    
+                        <div class="popup-buttons">
+                            <button class="confirm-btn" id="confirm-btn">
+                                Create
+                            </button>
+                            <button class="cancel-btn" id="cancel-btn">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+               </div>
+            </section>
+        </aside>
+
+        <section class="task-view" id="task-view"></section>
+
+    </main>
+
     
-    </div>
-
-
+    <footer class="footer">
+        <div class="container">
+ 
+             <p class="copyright">
+                 &copy; 2025 <a href="https://github.com/aleksfeschuk" class="copyright-link">Oleksandr Feshchuk</a>
+             </p>
+                 
+             <ul class="footer-list">
+                 <li>
+                     <a href="#" class="footer-link">Terms & Condition</a>
+                 </li>
+ 
+                 <li>
+                     <a href="#" class="footer-link">Privacy Policy</a>
+                 </li>
+             </ul>
+        </div>
+     </footer>
+    
 
 
     <script src="/bundle.js"></script>
