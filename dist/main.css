@@ -1,0 +1,355 @@
+:root {
+
+    /* 
+    
+    Colors
+    
+    */
+
+    --cadet-blue-crayola: hsl(240, 10%, 70%);
+    --gold-web-golder: hsl(50, 100%, 54%);
+    --vivid-sky-blue: hsl(196, 84%, 63%);
+    --midnight-blue: hsl(231, 83%, 25%);
+    --minion-yellow: hsl(50, 100%, 64%);
+    --independence: hsl(225, 24%, 27%);
+    --orange-soda: hsl(7, 96%, 61%);
+    --space-cadet: hsl(243, 23%, 18%);
+    --fiery-rose: hsl(353, 83%, 65%);
+    --klein-blue: hsl(230, 80%, 39%);
+    --bluetiful: hsl(222, 88%, 55%);
+    --glaucous: hsl(230, 52%, 63%);
+    --manatee: hsl(254, 7%, 65%);
+    --rufous: hsl(2, 85%, 35%);
+    --black: hsl(0, 0%, 0%);
+    --white: hsl(0%, 0%, 100%);
+
+
+}
+
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    position: relative;
+    min-block-size: 100%;
+}
+
+body {
+    background-color: var(--vivid-sky-blue);
+    color: var(--cadet-blue-crayola);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.8;
+    margin-bottom: 48px;
+}
+
+button, 
+input {
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+i {
+    margin-right: 10px;
+}
+
+
+/*  
+    Header
+*/
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: var(--orange-soda);
+    color: #000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 24px;
+    color: var(--black);
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.toggle-nav {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.toggle-nav:hover {
+    transform: scale(1.1);
+}
+
+
+
+/* 
+    MAIN
+
+*/
+
+
+
+.content {
+    display: flex;
+    height: 100vh;
+    background-color: #fff;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--space-cadet);
+    color: var(--black);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.default-categories .category-button {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #fff;
+    text-align: left;
+    padding: 12px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.category-button {
+    font-size: 18px;
+    color: var(--gold-web-golder);
+}
+
+.category-button:hover {
+    background:var(--independence);
+    border-radius: 5px;
+}
+
+.custom-projects-header {
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+    border-bottom: 2px solid var(--gold-web-golder);
+    padding-bottom: 5px;
+}
+
+.add-project-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+.add-project-btn i {
+    color: var(--minion-yellow);
+}
+
+.add-project-btn:hover {
+   background: var(--independence);
+   border-radius: 5px;
+}
+
+
+/*  popup create project */
+
+
+.project-popup {
+    background: var(--independence);
+    padding: 15px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: none;
+}
+
+.project-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--manatee);
+    border-radius: 5px;
+}
+
+
+.popup-button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.confirm-btn, .cancel-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.confirm-btn {
+    background: var(--vivid-sky-blue);
+    color: var(--white);
+}
+
+.cancel-btn {
+    background: var(--fiery-rose);
+    color: var(--white);
+}
+
+/* task */
+
+.task-view {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* task card */
+
+.task-card {
+    background: var(--independence);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+.task-delete {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--rufous);
+    transition: color 0.2s ease;
+}
+
+.task-delete:hover {
+    color: var(--fiery-rose);
+}
+
+
+
+.task-description {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.task-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.task-edit, .task-complete {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.task-edit {
+    background: var(--orange-soda);
+    color: #fff;
+}
+
+.task-edit:hover {
+    background: var(--vivid-sky-blue);
+    transform: scale(1.05);
+}
+
+.task-complete {
+    background: var(--klein-blue);
+    color: #fff;
+}
+
+.task-complete:hover {
+    background: var(--bluetiful);
+    transform: scale(1.05);
+}
+
+.task-complete:disabled {
+    background: var(--manatee);
+    cursor: not-allowed;
+}

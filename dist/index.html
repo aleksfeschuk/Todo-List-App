@@ -7,12 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
 
     <!-- Header -->
    <header class="header">
-        <div class="container">
             <div class="logo">
                 <i class="fas fa-check-double"></i>
                 <h1 class="title">Todo List</h1>
@@ -21,7 +21,6 @@
             <button class="toggle-nav" id="toggle-nav">
                 <i class="fas fa-bars"></i>
             </button> 
-        </div>
    </header>
 
 
@@ -76,7 +75,22 @@
             </section>
         </aside>
 
-        <section class="task-view" id="task-view"></section>
+        <section class="task-view" id="task-view">
+            <div class="container">
+                <div class="task-card" data-id="1">
+                    <div class="task-header">
+                        <h3 class="task-title">My task</h3>
+                        <button class="task-delete" aria-label="Delete task">&times;</button>
+                    </div>
+                    <p class="task-description"> Customize my task in my To-Do List project.</p>
+                    <div class="task-actions">
+                        <button class="task-edit">Edit</button>
+                        <button class="task-complete">✔</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
 
     </main>
 
@@ -103,5 +117,8 @@
 
 
     <script src="/bundle.js"></script>
+
+    <script src="https://kit.fontawesome.com/4c536a6bd5.js"
+    crossorigin="anonymous"></script>
 </body>
 </html>
