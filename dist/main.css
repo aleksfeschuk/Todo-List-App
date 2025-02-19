@@ -58,16 +58,17 @@ input {
 }
 
 button {
-    width: 100%;
     padding: 10px 20px;
     border-radius: 50px;
     cursor: pointer;
+    transition: backgorund 0.3s ease;
 }
 
 input {
-    width: 100%;
     padding: 10px;
     border-radius: 5px;
+    border: 1px solid var(--manatee);
+    background-color: #fff;
 }
 
 i {
@@ -162,11 +163,11 @@ i {
 
 .category-button {
     font-size: 18px;
-    color: var(--gold-web-golder);
+    color: var(--white);
 }
 
 .category-button:hover {
-    background:var(--independence);
+    background:var(--bluetiful);
     border-radius: 5px;
 }
 
@@ -217,7 +218,19 @@ i {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     display: none;
+    opacity: 0;
+    animation: popupFadeIn 0.5s forwards;
 }
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 
 .project-input {
     width: 100%;
@@ -253,13 +266,22 @@ i {
 /* task */
 
 .task-view {
-    flex: 1;
-    padding: 20px;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    width: 100%; 
+    box-sizing: border-box;
 }
 
+
+.task.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%;
+    height: 100%; 
+}
 /* task card */
 
 .task-card {
@@ -288,7 +310,7 @@ i {
 }
 
 .task-title {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 600;
     color: #fff;
     margin: 0;
@@ -297,9 +319,9 @@ i {
 .task-delete {
     background: none;
     border: none;
-    font-size: 18px;
+    font-size: 24px;
     cursor: pointer;
-    color: var(--rufous);
+    color: red;
     transition: color 0.2s ease;
 }
 
@@ -311,7 +333,7 @@ i {
 
 .task-description {
     color: #fff;
-    font-size: 14px;
+    font-size: 24px;
     margin-bottom: 15px;
 }
 
@@ -322,7 +344,7 @@ i {
 }
 
 .task-edit, .task-complete {
-    padding: 5px 10px;
+    padding: 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
