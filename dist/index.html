@@ -4,118 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do List App</title>
+    <link rel="stylesheet" href="./main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./main.css">
-    <script src="https://kit.fontawesome.com/4c536a6bd5.js"
-    crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Header -->
-   <header class="header">
-            <div class="logo">
-                <i class="fas fa-check-double"></i>
-                <h1 class="title">Todo List</h1>
+   
+    <div class="container">
+        <h1 class="heading">
+            Todo App
+        </h1>
+        <div class="tasks-wrapper">
+            <div class="progress-container">
+                <p>Progress: <span id="progress-persent">0%</span></p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
             </div>
-            <!-- open nav -->
-            <button class="toggle-nav" id="toggle-nav">
-                <i class="fas fa-bars"></i>
-            </button> 
-   </header>
-
-
-    <!-- main -->
-
-    <main class="content">
-        <aside class="sidebar" id="sidebar">
-            
-            <section class="default-categories">
-               
-                <div class="container">
-                    <button class="category-button" id="inbox-category">
-                        <i class="fas fa-inbox"></i>
-                        Inbox
-                    </button>
-                    <button class="category-button" id="today-category">
-                        <i class="fas fa-calendar-day"></i>
-                        Today
-                    </button>
-                    <button class="category-button" id="week-category">
-                        <i class="fas fa-calendar-week"></i>
-                        This Week
-                    </button>
-
-                    <!-- Custom projects -->
-                    <h2 class="custom-projects-header">My projects</h2>
-                    <div class="project-list" id="project-list"></div>
-                    <button class="add-project-btn" id="add-project-btn">
-                        <i class="fas fa-plus-circle"></i>
-                        New Project
-                    </button>
-
-                    <!-- Project creation popup -->
-
-                    <div class="project-popup" id="project-popup">
-                        <input 
-                            class="project-input"
-                            id="project-input"
-                            type="text"
-                            placeholder="Enter project name">
-                    
-                        <div class="popup-buttons">
-                            <button class="confirm-btn" id="confirm-btn">Create</button>
-                            <button class="cancel-btn" id="cancel-btn">Close</button>
-                        </div>
+            <div class="task ">
+                <div class="left">
+                    <div class="radio">
+                        <ion-icon class="icon" name="checkmark"></ion-icon>
                     </div>
-               </div>
-            </section>
-        </aside>
-
-        <section class="task-view" id="task-view">
-            <div class="task container">
-                <div class="task-card" data-id="1">
-                    <div class="task-header">
-                        <h3 class="task-title">My task</h3>
-                        <button class="task-delete" aria-label="Delete task">&times;</button>
-                    </div>
-                    <p class="task-description"> Customize my task in my To-Do List project.</p>
-                    <div class="task-actions">
-                        <button class="task-edit" id="task-edit">Edit</button>
-                        <button class="task-complete" id="task-complete">✔</button>
+                </div>
+                <div class="right">
+                    <p id="title"> This is a title</p>
+                    <p id="description">This is a description</p>
+                    <div class="info">
+                        <p class="date">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <span>19.02.2025</span>
+                        </p>
+                        <p class="dot">
+                            <ion-icon name="ellipse"></ion-icon>
+                        </p>
+                        <p class="time">
+                            <ion-icon name="time-outline"></ion-icon>
+                            <span>12:00 PM</span>
+                        </p>
                     </div>
                 </div>
             </div>
-
-        </section>
-
-    </main>
-
-    
-    <footer class="footer">
-        <div class="container">
- 
-             <p class="copyright">
-                 &copy; 2025 <a href="https://github.com/aleksfeschuk" class="copyright-link">Oleksandr Feshchuk</a>
-             </p>
-                 
-             <ul class="footer-list">
-                 <li>
-                     <a href="#" class="footer-link">Terms & Condition</a>
-                 </li>
- 
-                 <li>
-                     <a href="#" class="footer-link">Privacy Policy</a>
-                 </li>
-             </ul>
+            <div class="task ">
+                <div class="left">
+                    <div class="radio">
+                        <ion-icon class="icon" name="checkmark"></ion-icon>
+                    </div>
+                </div>
+                <div class="right">
+                    <p id="title"> This is a title</p>
+                    <p id="description">This is a description</p>
+                    <div class="info">
+                        <p class="date">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <span>19.02.2025</span>
+                        </p>
+                        <p class="dot">
+                            <ion-icon name="ellipse"></ion-icon>
+                        </p>
+                        <p class="time">
+                            <ion-icon name="time-outline"></ion-icon>
+                            <span>12:00 PM</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="delete show">
+                <ion-icon name="trash-outline"></ion-icon>
+            </div>
         </div>
-     </footer>
+        <div class="add-wrapper">
+            <form action="" id="add-task-form">
+                <div class="details">
+                    <input type="text" id="title" placeholder="Task name here"/>
+                    <textarea 
+                        id="description" 
+                        placeholder="Task description here">
+                    </textarea>
+                </div>
+                <div class="footer">
+                    <div class="info">
+                        <label for="date">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <input type="date" name="" id="date">
+                            <span>due date</span>
+                        </label>
+                        <label for="date">
+                            <ion-icon name="time-outline"></ion-icon>
+                            <input type="time" name="" id="time">
+                            <span>due time</span>
+                            
+                        </label>
+                    </div>
+                    <div class="options">
+                        <button class="theme-toggle" id="theme-toggle">Dark Mode</button>
+                        <button type="button" class="btn clear">clear</button>
+                        <button class="btn add">add task</button>
+                        
+                    </div>
+                </div>
+            </form>
+
+            <div class="tags-container">
+                <input type="text" id="tag-input" placeholder="Add-tags (e.g., #work, #study)" onkeyup="updateTags()">
+                <div class="tags-list" id="tags-list"></div>
+            </div>
+        </div>
+    </div>
     
 
-    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <script src="bundle.js" defer></script>
+    <script src="bundle.js" defer></script> 
 
     
 </body>
