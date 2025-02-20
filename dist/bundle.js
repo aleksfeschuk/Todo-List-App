@@ -7,26 +7,130 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("document.addEventListener('DOMContentLoaded', () => {\r\n    console.log('working')\r\n    const app = new ToDoApp();\r\n});\r\n\r\n\r\nclass ToDoApp {\r\n    constructor() {\r\n        this.tasks = [];\r\n        this.projects = [];\r\n        this.loadFromLocalStorage();\r\n        this.initEventListeners();\r\n        this.renderProjects();\r\n        this.renderTasks();\r\n    }\r\n\r\n\r\n// Initialize event listeners for btn, inputs, etc.\r\n\r\ninitEventListeners() {\r\n\r\n    //event listener for adding a new project\r\n\r\n    this.addProjectButton = document.getElementById('add-project-btn');\r\n    this.addProjectButton.addEventListener('click', () => this.showProjectPopup());\r\n\r\n    this.confirmButton = document.getElementById('confirm-btn');\r\n    this.confirmButton.addEventListener('click', () => this.createProject());\r\n\r\n    this.cancelButton = document.getElementById('cancel-btn');\r\n    this.cancelButton.addEventListener('click', () => this.hideProjectPopup());\r\n\r\n    //event listener for adding a new task\r\n\r\n    this.addTaskButton = document.getElementById('add-task-btn');\r\n    this.addTaskButton.addEventListener('click', () => this.showTaskPopup());\r\n\r\n    this.taskPopupCloseButton = document.getElementById('task-popup-close');\r\n    this.taskPopupCloseButton.addEventListener('click', () => this.hideTaskPopup());\r\n\r\n    this.taskForm = document.getElementById('task-form');\r\n    this.taskForm.addEventListener('submit', (e) => this.handleTaskFormSubmit(e));\r\n\r\n\r\n    // Event delegation for task delete and complete\r\n\r\n    document.addEventListener('click', (e) => {\r\n        if (e.target.classList.contains('task-delete')) {\r\n            const taskId = e.target.closest('.task-card').getAttribute('data-id');\r\n            this.deleteTask(taskId);\r\n        } else if (e.target.classList.contains('task-complete')) {\r\n            const taskId = e.target.closest('.task-card').getAttribute('data-id');\r\n            this.completeTask(taskId);\r\n        } else if (e.target.classList.contains('task-edit')) {\r\n            const taskId = e.target.closest('.task-edit').getAttribute('data-id');\r\n            this.editTask(taskId);\r\n        }\r\n    });\r\n\r\n}\r\n\r\n    showProjectPopup() {\r\n        document.getElementById('project-popup').style.display = 'block';\r\n    }\r\n\r\n    hideTaskPopup() {\r\n        document.getElementById('task-popup').style.display = 'none';\r\n    }\r\n\r\n    // method to create a new project\r\n    createProject() {\r\n        const projectName = document.getElementById('project-input').value;\r\n        if (projectName.trim() !== '') {\r\n            this.projects.push({ name: projectName });\r\n            this.saveToLocalStorage();\r\n            this.renderProjects();\r\n            this.hideProjectPopup();\r\n        }\r\n    }\r\n\r\n    // method to render the list of projects\r\n\r\n\r\n    renderProjects() {\r\n        const projectList = document.getElementById('project-list');\r\n        projectList.innerHTML = '';\r\n        this.projects.forEach((project, index) => {\r\n            const projectItem = document.createElement('div');\r\n            projectItem.classList.add('project-item');\r\n            projectItem.innerHTML = `\r\n                <span>${project.name}</span>\r\n                <button class=\"delete-project\" data-id=\"${index}\">&times;</button>\r\n            `;\r\n            projectList.appendChild(projectItem);\r\n        });\r\n    }\r\n\r\n    deleteProject(index) {\r\n        this.projects.splice(index, 1);\r\n        this.saveToLocalStorage();\r\n        this.renderProjects();\r\n    }\r\n\r\n    // method to add a new task\r\n\r\n\r\n    addTask(title, description, projectId = null) {\r\n        const task = {\r\n            id: this.tasks.length + 1,\r\n            title,\r\n            description,\r\n            completed: false,\r\n            projectId\r\n        };\r\n\r\n        this.tasks.push(task);\r\n        this.saveToLocalStorage();\r\n        this.renderProjects();\r\n    }\r\n\r\n    renderTasks() {\r\n        const taskList = document.getElementById('task-list');\r\n        taskList.innerHTML = '';\r\n        this.tasks.forEach(task => {\r\n            const taskCard = document.createElement('div');\r\n            taskCard.classList.add('task-card');\r\n            taskCard.setAttribute('data-id', task.id);\r\n\r\n            taskCard.innerHTML = `\r\n                <div class=\"task-header\">\r\n                <h3 class=\"task-title\">${task.title}</h3>\r\n                <button class=\"task-delete\">&times;</button>\r\n                </div>\r\n                <p class=\"task-description\">${task.description}</p>\r\n                <div class=\"task-actions\">\r\n                <button class=\"task-edit\">Edit</button>\r\n                <button class=\"task-complete\">✔</button>\r\n                </div>\r\n            `;\r\n\r\n\r\n            taskList.appendChild(taskCard);\r\n            if(task.completed) {\r\n                taskCard.classList.add('completed');\r\n            }\r\n        });\r\n    }\r\n    \r\n    // method to handle task form submission\r\n\r\n    handleTaskFormSubmit(event) {\r\n        event.preventDefault();\r\n        const title = document.getElementById('task-title').value;\r\n        const description = document.getElementById('task-description').value;\r\n        const projectId = document.getElementById('task-project').value || null;\r\n\r\n        if (title.trim() !== '' && description.trim() !== '') {\r\n            this.addTask(title, description, projectId);\r\n            this.hideTaskPopup();\r\n        }\r\n    }\r\n\r\n    // method to show the task creation popup\r\n\r\n    showTaskPopup() {\r\n        document.getElementById('task-popup').style.display = 'block';\r\n    }\r\n\r\n    // method hide\r\n\r\n    hideProjectPopup() {\r\n        document.getElementById('task-popup').style.display = 'none';\r\n    }\r\n\r\n    // method to mark a task as complete\r\n\r\n    completeTask(taskId) {\r\n        const task = this.tasks.find(t => t.id === parseInt(taskId));\r\n        if (task) {\r\n            task.completed = !task.completed;\r\n            this.saveToLocalStorage();\r\n            this.renderTasks();\r\n        }\r\n    }\r\n\r\n    // method to delete a task\r\n\r\n    deleteTask(taskId) {\r\n        this.tasks = this.tasks.filter(task => task.id !== parseInt(taskId));\r\n        this.saveToLocalStorage();\r\n        this.renderTasks();\r\n    }\r\n\r\n    // method to edit a task\r\n\r\n    editTask(taskId) {\r\n        const task = this.tasks.find(t => t.id === parseInt(taskId));\r\n        if (task) {\r\n            document.getElementById('task-title').value = task.title;\r\n            document.getElementById('task-description').value = task.description;\r\n            document.getElementById('task-id').value = task.id;\r\n            this.showTaskPopup();\r\n        }\r\n    }\r\n\r\n    //method to save data to local storage\r\n\r\n    saveToLocalStorage() {\r\n        localStorage.setItem('tasks', JSON.stringify(this.tasks));\r\n        localStorage.setItem('projects', JSON.stringify(this.projects));\r\n    }\r\n\r\n    // method to load data from local storage\r\n\r\n    loadFromLocalStorage() {\r\n        const tasksFromStorage = localStorage.getItem('tasks');\r\n        const projectsFromStorage = localStorage.getItem('projects');\r\n        if (tasksFromStorage) {\r\n            this.tasks = JSON.parse(tasksFromStorage);\r\n        }\r\n        if (projectsFromStorage) {\r\n            this.projects = JSON.parse(projectsFromStorage);\r\n        }\r\n    }\r\n\r\n}\r\n\r\n\r\n\n\n//# sourceURL=webpack://todolist/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_TodoApp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/TodoApp */ \"./src/modules/TodoApp.js\");\n\r\n\r\ndocument.addEventListener('DOMContentLoaded', () => {\r\n    new _modules_TodoApp__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\r\n});\r\n\n\n//# sourceURL=webpack://todolist/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/Task.js":
+/*!*****************************!*\
+  !*** ./src/modules/Task.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Task)\n/* harmony export */ });\nclass Task {\r\n    constructor(title, description, date, time) {\r\n        this.title = title;\r\n        this.description = description;\r\n        this.date = date;\r\n        this.time = time;\r\n    }\r\n\r\n    isExpired() {\r\n        let taskDate = new Date(this.date);\r\n        let taskTime = new Date(this.time);\r\n        let now = new Date();\r\n        return taskDate < now || taskTime < now;\r\n    }\r\n}\n\n//# sourceURL=webpack://todolist/./src/modules/Task.js?");
+
+/***/ }),
+
+/***/ "./src/modules/TaskForm":
+/*!******************************!*\
+  !*** ./src/modules/TaskForm ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ TaskForm)\n/* harmony export */ });\nclass TaskForm {\r\n    \r\n}\n\n//# sourceURL=webpack://todolist/./src/modules/TaskForm?");
+
+/***/ }),
+
+/***/ "./src/modules/TaskManager.js":
+/*!************************************!*\
+  !*** ./src/modules/TaskManager.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ TaskManager)\n/* harmony export */ });\n/* harmony import */ var _Task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Task */ \"./src/modules/Task.js\");\n\r\n\r\nclass TaskManager {\r\n    constructor() {\r\n        this.tasks = [\r\n            new _Task__WEBPACK_IMPORTED_MODULE_0__[\"default\"](\"Task 1\", \"Task 1 description\", \"19 Feb 2025\", \"10:10\"),\r\n            new _Task__WEBPACK_IMPORTED_MODULE_0__[\"default\"](\"Task 2\", \"Task 2 description\", \"19 Feb 2025\", \"10:10\"),\r\n            new _Task__WEBPACK_IMPORTED_MODULE_0__[\"default\"](\"Task 3\", \"Task 3 description\", \"19 Feb 2025\", \"10:10\"),\r\n            new _Task__WEBPACK_IMPORTED_MODULE_0__[\"default\"](\"Task 4\", \"Task 4 description\", \"19 Feb 2025\", \"10:10\"),\r\n        ];\r\n    }\r\n\r\n    addTask(title, description, date, time) {\r\n        const newTask = new _Task__WEBPACK_IMPORTED_MODULE_0__[\"default\"](title, description, date, time);\r\n        this.tasks.push(newTask);\r\n    }\r\n\r\n    deleteTask(title) {\r\n        this.tasks = this.tasks.filter(task => task.title !== title);\r\n    }\r\n\r\n    getTasks() {\r\n        return this.tasks;\r\n    }\r\n}\n\n//# sourceURL=webpack://todolist/./src/modules/TaskManager.js?");
+
+/***/ }),
+
+/***/ "./src/modules/TodoApp.js":
+/*!********************************!*\
+  !*** ./src/modules/TodoApp.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _TaskManager__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskManager */ \"./src/modules/TaskManager.js\");\n/* harmony import */ var _taskRenderer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./taskRenderer */ \"./src/modules/taskRenderer.js\");\n/* harmony import */ var _TaskForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TaskForm */ \"./src/modules/TaskForm\");\n\r\n\r\n\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", () => {\r\n    const taskManager = new _TaskManager__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\r\n    const taskRenderer = new _taskRenderer__WEBPACK_IMPORTED_MODULE_1__[\"default\"](taskManager);\r\n    const taskForm = new _TaskForm__WEBPACK_IMPORTED_MODULE_2__[\"default\"](taskManager, taskRenderer);\r\n  \r\n    taskRenderer.renderTasks();\r\n    taskForm.init();\r\n  });\r\n\n\n//# sourceURL=webpack://todolist/./src/modules/TodoApp.js?");
+
+/***/ }),
+
+/***/ "./src/modules/taskRenderer.js":
+/*!*************************************!*\
+  !*** ./src/modules/taskRenderer.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ TaskRenderer)\n/* harmony export */ });\nclass TaskRenderer {\r\n    constructor(taskManager) {\r\n        this.taskManager = taskManager;\r\n        this.tasksWrapper = document.querySelector('.tasks-wrapper');\r\n    }\r\n\r\n    renderTasks() {\r\n        this.tasksWrapper.innerHTML = \"\";\r\n\r\n        const tasks = this.taskManager.getTasks();\r\n\r\n        if (tasks.length === 0) {\r\n            this.tasksWrapper.innerHTML = `<div class=\"no-tasks\">No tasks, Add one now</div>`;\r\n            return;\r\n        }\r\n\r\n        tasks.forEach((task) => {\r\n            let expired = task.isExpired() ? \"expired\" : \"\";\r\n\r\n            this.tasksWrapper.innerHTML += `\r\n                <div class=\"task\">\r\n                    <div class=\"left\">\r\n                        <div class=\"radio\">\r\n                        <ion-icon class=\"icon\" name=\"checkmark\"></ion-icon>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"right\">\r\n                        <p class=\"title\">${task.title}</p>\r\n                        <p class=\"description\">${task.description}</p>\r\n                        <div class=\"info ${expired}\">\r\n                        <p class=\"date\">\r\n                            <ion-icon name=\"calendar-outline\"></ion-icon>\r\n                            <span>${task.date}</span>\r\n                        </p>\r\n                        <p class=\"dot\">\r\n                            <ion-icon name=\"ellipse\"></ion-icon>\r\n                        </p>\r\n                        <p class=\"time\">\r\n                            <ion-icon name=\"time-outline\"></ion-icon>\r\n                            <span>${task.time}</span>\r\n                        </p>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            `;\r\n        });\r\n\r\n        this.tasksWrapper.innerHTML += `\r\n            <div class=\"delete\">\r\n                <ion-icon name=\"trash-outline\"></ion-icon>\r\n            </div>\r\n        `;\r\n        this.attachEventListeners();\r\n    }\r\n\r\n    attachEventListeners() {\r\n        const tasks = document.querySelectorAll('.task');\r\n\r\n        tasks.forEach((taskElement) => {\r\n            taskElement.addEventListener('click', (e) => {\r\n                if (e.target.classList.contains('radio')) {\r\n                    taskElement.classList.toggle('selected');\r\n                    if (document.querySelector('.task.selected')) {\r\n                        document.querySelector('.delete').classList.add('show');\r\n                    } else {\r\n                        document.querySelector('.delete').classList.remove('show');\r\n                    }\r\n                }\r\n            });\r\n        });\r\n\r\n        const deleteBtn = document.querySelector('.delete');\r\n        deleteBtn.addEventListener('click', this.deleteTasks.bind(this));\r\n    }\r\n\r\n    deleteTasks() {\r\n        const selected = document.querySelectorAll('.task.selected');\r\n        if (selectedTasks.length === 0) return;\r\n\r\n        let confirmDelete = confirm(\"Are you sure you want to delete selected tasks?\");\r\n        if (confirmDelete) {\r\n            selectedTasks.forEach((taskElement) => {\r\n                let title = taskElement.querySelector('.title').innerHTML;\r\n                this.taskManager.deleteTasks(title);\r\n            });\r\n            this.renderTasks();\r\n        }\r\n    }\r\n}\r\n\r\n\n\n//# sourceURL=webpack://todolist/./src/modules/taskRenderer.js?");
 
 /***/ })
 
 /******/ 	});
 /************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/index.js"]();
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
 /******/ 	
 /******/ })()
 ;

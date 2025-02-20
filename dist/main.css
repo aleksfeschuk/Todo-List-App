@@ -10,16 +10,6 @@
     --task-bg: #fff;
 }
 
-.dark-mode {
-    --bg-color: #1e1e1e;
-    --text-color: #e0e0e0;
-    --container-bg: #2c2c2c;
-    --border-color: #444;
-    --task-bg: #333;
-}
-
-
-
 * {
     margin: 0;
     padding: 0;
@@ -72,29 +62,6 @@ body {
     gap: 20px;
     height: 300px;
     overflow: auto;
-}
-
-.progress-container {
-    margin: 20px 0;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 10px;
-    background: #e0e0e0;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-top: 5px;
-}
-
-.progress-fill {
-    width: 0%;
-    height: 100%;
-    background: #4caf50;
-    transition: width 0.3ease ease-in-out;    
 }
 
 
@@ -196,6 +163,13 @@ body {
 
 .tasks-wrapper .delete.show {
     display: flex;
+}
+
+.tasks-wrapper .no-tasks {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .add-wrapper {
@@ -300,62 +274,7 @@ body {
     background-color: var(--primary-color);
 }
 
-.footer .theme-toggle {
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: var(--text-color);
-    color: #fff;
-    font-weight: bold;
-    border: none;
-    transition: all 0.3s ease;
-}
 
-
-/* style tag */
-
-.tags-container {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-#tag-input {
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    outline: none;
-}
-
-#tag-input:focus {
-    border-color: #5c6bc0;
-}
-
-.tags-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.tag {
-    background-color: #5c6bc0;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 14px;
-    display: inline-flex;
-    align-items: center;
-}
-.tag .remove-tag {
-    margin-left: 5px;
-    cursor: pointer;
-}
-
-#tag-input::placeholder {
-    color: var(--border-color);
-}
 
 
 /*  Media queries */

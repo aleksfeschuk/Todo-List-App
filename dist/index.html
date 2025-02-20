@@ -13,107 +13,43 @@
 
    
     <div class="container">
-        <h1 class="heading">
-            Todo App
-        </h1>
+        <h1 class="heading">Todo App</h1>
         <div class="tasks-wrapper">
-            <div class="progress-container">
-                <p>Progress: <span id="progress-persent">0%</span></p>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
-                </div>
-            </div>
-            <div class="task ">
-                <div class="left">
-                    <div class="radio">
-                        <ion-icon class="icon" name="checkmark"></ion-icon>
-                    </div>
-                </div>
-                <div class="right">
-                    <p id="title"> This is a title</p>
-                    <p id="description">This is a description</p>
-                    <div class="info">
-                        <p class="date">
-                            <ion-icon name="calendar-outline"></ion-icon>
-                            <span>19.02.2025</span>
-                        </p>
-                        <p class="dot">
-                            <ion-icon name="ellipse"></ion-icon>
-                        </p>
-                        <p class="time">
-                            <ion-icon name="time-outline"></ion-icon>
-                            <span>12:00 PM</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="task ">
-                <div class="left">
-                    <div class="radio">
-                        <ion-icon class="icon" name="checkmark"></ion-icon>
-                    </div>
-                </div>
-                <div class="right">
-                    <p id="title"> This is a title</p>
-                    <p id="description">This is a description</p>
-                    <div class="info">
-                        <p class="date">
-                            <ion-icon name="calendar-outline"></ion-icon>
-                            <span>19.02.2025</span>
-                        </p>
-                        <p class="dot">
-                            <ion-icon name="ellipse"></ion-icon>
-                        </p>
-                        <p class="time">
-                            <ion-icon name="time-outline"></ion-icon>
-                            <span>12:00 PM</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="delete show">
-                <ion-icon name="trash-outline"></ion-icon>
-            </div>
+          <div class="delete">
+            <ion-icon name="trash-outline"></ion-icon>
+          </div>
         </div>
         <div class="add-wrapper">
-            <form action="" id="add-task-form">
-                <div class="details">
-                    <input type="text" id="title" placeholder="Task name here"/>
-                    <textarea 
-                        id="description" 
-                        placeholder="Task description here">
-                    </textarea>
-                </div>
-                <div class="footer">
-                    <div class="info">
-                        <label for="date">
-                            <ion-icon name="calendar-outline"></ion-icon>
-                            <input type="date" name="" id="date">
-                            <span>due date</span>
-                        </label>
-                        <label for="date">
-                            <ion-icon name="time-outline"></ion-icon>
-                            <input type="time" name="" id="time">
-                            <span>due time</span>
-                            
-                        </label>
-                    </div>
-                    <div class="options">
-                        <button class="theme-toggle" id="theme-toggle">Dark Mode</button>
-                        <button type="button" class="btn clear">clear</button>
-                        <button class="btn add">add task</button>
-                        
-                    </div>
-                </div>
-            </form>
-
-            <div class="tags-container">
-                <input type="text" id="tag-input" placeholder="Add-tags (e.g., #work, #study)" onkeyup="updateTags()">
-                <div class="tags-list" id="tags-list"></div>
+          <form action="" id="add-task-form">
+            <div class="details">
+              <input type="text" id="title" placeholder="Task name here" />
+              <textarea
+                id="description"
+                placeholder="Task description here"
+              ></textarea>
             </div>
+            <div class="footer">
+              <div class="info">
+                <label for="date">
+                  <ion-icon name="calendar-outline"></ion-icon>
+                  <input type="date" name="" id="date" />
+                  <span>due date</span>
+                </label>
+                <label for="time">
+                  <ion-icon name="time-outline"></ion-icon>
+                  <input type="time" name="" id="time" />
+                  <span>due time</span>
+                </label>
+              </div>
+              <div class="options">
+                <button type="button" class="btn clear">clear</button>
+                <button class="btn add">add task</button>
+              </div>
+            </div>
+          </form>
         </div>
-    </div>
-    
+      </div>
+  
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
