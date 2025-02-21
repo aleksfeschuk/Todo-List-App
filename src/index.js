@@ -1,5 +1,4 @@
-import TodoApp from './modules/TodoApp';
+import TodoApp from './modules/TodoApp.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-    new TodoApp();
-});
+const app = new TodoApp();
+app.init();

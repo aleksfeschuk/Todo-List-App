@@ -1,14 +1,21 @@
 import TaskManager from './TaskManager';
 import TaskRenderer from './taskRenderer';
-import TaskForm from './TaskForm';
+import TaskForm from './TaskForm.js';
 
-document.addEventListener("DOMContentLoaded", () => {
-    const taskManager = new TaskManager();
-    const taskRenderer = new TaskRenderer(taskManager);
-    const taskForm = new TaskForm(taskManager, taskRenderer);
-  
-    taskRenderer.renderTasks();
-    taskForm.init();
-  });
+export default class TodoApp {
+    constructor() {
+      this.taskManager = new TaskManager();
+      this.taskRenderer = new TaskRenderer(this.taskManager);
+      this.taskForm = new TaskForm(this.taskManager, this.taskRenderer);
+    }
 
-export default TodoApp;
+    init() {
+      document.addEventListener('DOMContentLoaded', () => {
+        this.taskRenderer.renderTasks();
+        this.taskForm.init();
+      });
+  }
+}
+    
+
+

@@ -75,13 +75,13 @@ export default class TaskRenderer {
 
     deleteTasks() {
         const selected = document.querySelectorAll('.task.selected');
-        if (selectedTasks.length === 0) return;
+        if (selected.length === 0) return;
 
         let confirmDelete = confirm("Are you sure you want to delete selected tasks?");
         if (confirmDelete) {
-            selectedTasks.forEach((taskElement) => {
+            selected.forEach((taskElement) => {
                 let title = taskElement.querySelector('.title').innerHTML;
-                this.taskManager.deleteTasks(title);
+                this.taskManager.deleteTask(title);
             });
             this.renderTasks();
         }
