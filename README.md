@@ -9,12 +9,9 @@ A simple and efficient to-do list application to help you organize your tasks.
 - Clear form fields after adding a task
 - Tasks are persisted using `localStorage`
 
-## Getting Started
-
-
 ### Installation
 
-1. Clone the repository:
+1. Clone the repository: https://app-todo-aleks.netlify.app/
 
 
 
